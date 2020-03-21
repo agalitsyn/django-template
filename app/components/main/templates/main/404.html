@@ -1,0 +1,15 @@
+{% extends 'main/app.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Page not found' %}{% endblock %}
+
+{% block content %}
+<div>
+  <h4>{% trans 'Page not found' %}</h4>
+  {% blocktrans %}
+  <p>
+    Please try <a href="/">returning to the home page</a>, or use search.
+  </p>
+  {% endblocktrans %}
+</div>
+{% endblock %}

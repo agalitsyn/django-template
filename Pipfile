@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+flake8 = "*"
+
+[packages]
+django = "~=2.2"
+django-extensions = "~=2.2"
+django-debug-toolbar = "~=2.2"
+gunicorn = "~=20.0"
+psycopg2-binary = "~=2.8"
+python-decouple = "*"
+django-split-settings = "*"
+
+[requires]
+python_version = "3.7"

@@ -1,0 +1,15 @@
+{% extends 'main/app.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Internal server error' %}{% endblock %}
+
+{% block content %}
+<div>
+  <h4>{% trans 'Internal server error' %}</h4>
+  {% blocktrans %}
+  <p>
+    Please try <a href="/">returning to the home page</a>.
+  </p>
+  {% endblocktrans %}
+</div>
+{% endblock %}
