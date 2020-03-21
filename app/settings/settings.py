@@ -115,7 +115,7 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#data-upload-max-number-fields
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
 # https://docs.djangoproject.com/en/3.0/ref/settings/#std:setting-DATA_UPLOAD_MAX_MEMORY_SIZE
-DATA_UPLOAD_MAX_MEMORY_SIZE = 2147483648 # 2GB
+DATA_UPLOAD_MAX_MEMORY_SIZE = 100000000  # 100mb
 
 # Security
 # https://docs.djangoproject.com/en/2.2/topics/security/
