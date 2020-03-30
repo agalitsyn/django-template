@@ -57,6 +57,9 @@ Project uses [pipenv](https://pipenv.pypa.io/en/latest/basics/).
 $ pipenv install
 ```
 
+Note:
+`pipenv` can create virtual env in project by defining `PIPENV_VENV_IN_PROJECT` or see [issue comment](https://github.com/pypa/pipenv/issues/2197#issuecomment-446601760).
+
 ### Install frontend dependencies
 
 ```bash
