@@ -4,8 +4,8 @@ Simple, but powerful starter django template for modern apps.
 
 ## Why?
 
-* Built-in `django-admin startproject` is far from Phoenix framework generator or RoR, no tooling, plain structure, basically nothing.
-* There are many generators for django already available using [cookiecutter](https://github.com/cookiecutter/cookiecutter#python-django). But I found them too complex for starting point of my projects.
+* Built-in `django-admin startproject` is far from [Phoenix framework generator](https://hexdocs.pm/phoenix/up_and_running.html), no tooling, plain structure, no assets management, basically nothing. It's outdated for modern apps.
+* There are many generators for django already available using [cookiecutter](https://github.com/cookiecutter/cookiecutter#python-django). But I found them too complex for starting point of my projects, even with a word `simple` in their names.
 
 Every django project starts with copy&paste from previous project, so I decided to put basic parts here:
 * managing python and html/css/js dependencies
