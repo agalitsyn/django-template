@@ -54,6 +54,11 @@ messages:
 compilemessages:
 	$(DJANGO_MANAGE) compilemessages --verbosity 3 --locale ru
 
+.PHONY: create-component
+create-component:
+	mkdir -pv app/components/$(name)
+	$(DJANGO_MANAGE) startapp $(name) app/components/$(name)
+
 .PHONY: admin
 admin:
 	$(DJANGO_MANAGE) createsuperuserwithpassword --username=admin --password=123qweasd --email=foo@bar.com
