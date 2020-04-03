@@ -5,6 +5,9 @@ verify_ssl = true
 
 [dev-packages]
 flake8 = "*"
+pylint = "*"
+autopep8 = "*"
+prospector = "*"
 
 [packages]
 django = "~=2.2"

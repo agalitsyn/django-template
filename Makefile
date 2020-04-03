@@ -61,7 +61,7 @@ create-component:
 
 .PHONY: admin
 admin:
-	$(DJANGO_MANAGE) createsuperuserwithpassword --username=admin --password=123qweasd --email=foo@bar.com
+	$(DJANGO_MANAGE) create_superuser_with_password --username=admin --password=123qweasd --email=foo@bar.com
 
 .PHONY: flush
 flush:
