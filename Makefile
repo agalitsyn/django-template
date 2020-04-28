@@ -5,7 +5,7 @@ ifndef VIRTUAL_ENV
 $(error VIRTUAL_ENV not specified, did you forget to source virtualenv?)
 endif
 
-DJANGO_MANAGE := $$(pwd)/djangoctl
+DJANGO_MANAGE := $$(pwd)/manage.py
 
 .PHONY: all
 all: check static compilemessages migrate

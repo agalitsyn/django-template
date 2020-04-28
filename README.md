@@ -20,8 +20,6 @@ Django apps are located in `app/components`. I really don't like using word `app
 Settings are splitted by enrironment in `app/settings`.
 Static and other files are moved to `assets` folder, which also is used to manage javascript and css dependencies using `npm`. In case of SPA frontend you may put project there and add webpack build and use it with [django-webpack-loader](https://github.com/owais/django-webpack-loader).
 
-Also I renamed `manage.py` to `djangoctl`, for better scripting and hisroty search.
-
 ## Development
 
 * Development settings are 0 configuration, no need to edit anything.
@@ -113,5 +111,5 @@ $ grep -rn DJANGO_ app/settings
 
 To run use:
 ```bash
-$ DJANGO_ENV=prod ./djangoctl runserver localhost:5000
+$ DJANGO_ENV=prod ./manage.py runserver localhost:5000
 ```
