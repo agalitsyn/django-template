@@ -1,5 +1,7 @@
 import os
 
+from decouple import config
+
 from app.settings.settings import INSTALLED_APPS, MIDDLEWARE, BASE_DIR
 
 
@@ -20,11 +22,26 @@ MIDDLEWARE += (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, '..', 'db.sqlite3'),
+db_settings = {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': os.path.join(BASE_DIR, '..', 'db.sqlite3'),
+}
+if config('DJANGO_POSTGRES_DB') != "":
+    db_settings = {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DJANGO_POSTGRES_DB',),
+        'USER': config('DJANGO_POSTGRES_USER'),
+        'PASSWORD': config('DJANGO_POSTGRES_PASSWORD'),
+        'HOST': config('DJANGO_POSTGRES_HOST'),
+        'PORT': config('DJANGO_POSTGRES_PORT', cast=int, default=5432),
+        'CONN_MAX_AGE': config('DJANGO_POSTGRES_CONN_MAX_AGE', cast=int, default=60),
+        'OPTIONS': {
+            'connect_timeout': config('DJANGO_POSTGRES_CONN_TIMEOUT', cast=int, default=60),
+        },
     }
+
+DATABASES = {
+    'default': db_settings,
 }
 
 CACHES = {

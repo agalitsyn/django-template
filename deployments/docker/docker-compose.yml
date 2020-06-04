@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+  frontend:
+    image: nginx:stable
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - django_static:/opt/django/assets/static:ro
+      - django_media:/opt/django/assets/media:ro
+    ports:
+      - ${HTTP_EXPOSED_PORT}:80
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  backend:
+    image: myproject/backend:latest
+    environment:
+      # startup trigges
+      RUN_DEV_SCRIPTS: ${RUN_DEV_SCRIPTS}
+      RUN_COLLECT_STATIC: ${RUN_COLLECT_STATIC}
+      RUN_COMPILE_MESSAGES: ${RUN_COMPILE_MESSAGES}
+      RUN_MIGRATIONS: ${RUN_MIGRATIONS}
+      RUN_DEV_SERVER: ${RUN_DEV_SERVER}
+
+      DJANGO_POSTGRES_DB: ${DB_NAME}
+      DJANGO_POSTGRES_USER: ${DB_USER}
+      DJANGO_POSTGRES_PASSWORD: ${DB_PASSWORD}
+      DJANGO_POSTGRES_HOST: ${DB_HOSTNAME}
+    volumes:
+      # map python sources for django dev server hot reload
+      - ./../../app:/opt/django/app
+      # volumes for django generated files
+      - django_static:/opt/django/assets/static
+      - django_media:/opt/django/assets/media
+      - django_locale:/opt/django/assets/locale
+    restart: unless-stopped
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:12
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    hostname: ${DB_HOSTNAME}
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    restart: unless-stopped
+
+volumes:
+  postgres_data: {}
+  django_static: {}
+  django_media: {}
+  django_locale: {}
