@@ -5,9 +5,9 @@ Simple, but powerful starter django template for modern apps.
 ## Why?
 
 * Built-in `django-admin startproject` is far from [Phoenix framework generator](https://hexdocs.pm/phoenix/up_and_running.html), no tooling, plain structure, no assets management, basically nothing. It's outdated for modern apps.
-* There are many generators for django already available using [cookiecutter](https://github.com/cookiecutter/cookiecutter#python-django). But I found them too complex for starting point of my projects, even with a word `simple` in their names.
+* There are many generators for django already available using [cookiecutter](https://github.com/cookiecutter/cookiecutter#python-django). But I found them too complex for starting point for my projects, even with a word `simple` in their names they are not so simple.
 
-Every django project starts with copy&paste from previous project, so I decided to put basic parts here:
+Generally, django project starts with copy&paste from previous project, so I decided to put basic parts here:
 * managing python and html/css/js dependencies
 * configuration
 * deployment
@@ -97,7 +97,7 @@ $ make
 $ make start
 ```
 
-## Production
+## Production configuration
 
 Environment settings are located in `.env` file. To configure current environment copy example file and fill it:
 ```bash
@@ -112,4 +112,33 @@ $ grep -rn DJANGO_ app/settings
 To run use:
 ```bash
 $ DJANGO_ENV=prod ./manage.py runserver localhost:5000
+```
+
+## Deployment
+
+### Docker
+
+For many MVPs docker is easy to go strategy for first deployments. Also docker provides pre-configured dev environment,
+which is very close to actual production (non-docker) deployments in terms of separated infrastructure components, like nginx proxy.
+
+#### Prerequisites
+
+* [docker-ce](https://docs.docker.com/engine/installation)
+* [docker-compose](https://docs.docker.com/compose)
+
+#### Build
+
+```bash
+$ make docker-build
+```
+
+Building docker images is separated from docker-compose, because I prefer to user docker-compose only as container launcher,
+not as all-in-one solution. When project goes we can switch to container schedulers like docker swarm or kubernetes,
+but build process will stay unchanged.
+
+#### Run
+
+```bash
+$ cd deployments/docker
+$ docker-compose up
 ```
