@@ -19,7 +19,7 @@ DATABASES = {
         'USER': config('DJANGO_POSTGRES_USER'),
         'PASSWORD': config('DJANGO_POSTGRES_PASSWORD'),
         'HOST': config('DJANGO_POSTGRES_HOST'),
-        'PORT': config('DJANGO_POSTGRES_PORT', cast=int),
+        'PORT': config('DJANGO_POSTGRES_PORT', cast=int, default=5432),
         'CONN_MAX_AGE': config('DJANGO_POSTGRES_CONN_MAX_AGE', cast=int, default=60),
         'OPTIONS': {
             'connect_timeout': config('DJANGO_POSTGRES_CONN_TIMEOUT', cast=int, default=60),

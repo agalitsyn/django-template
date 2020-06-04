@@ -2,14 +2,18 @@
 .idea
 .vscode
 
+# env files
+.env
+!deployments/docker/.env
+
 # static files generated from Django
 assets/media
 assets/static
+# static files generated from npm
 assets/node_modules
 
 
 # The rest is from https://github.com/github/gitignore/blob/master/Python.gitignore
-
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -119,7 +123,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
 .venv
 env/
 venv/

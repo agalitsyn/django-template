@@ -108,7 +108,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, '..', 'assets', 'node_modules'),
 )
 
-MEDIA_ROOT = config('DJANGO_MEDIA_ROOT', default=os.path.join(BASE_DIR, '..', 'media'))
+MEDIA_ROOT = config('DJANGO_MEDIA_ROOT', default=os.path.join(BASE_DIR, '..', 'assets', 'media'))
 MEDIA_URL = '/media/'
 
 # Fix: The number of GET/POST parameters exceeded settings.DATA_UPLOAD_MAX_NUMBER_FIELDS
