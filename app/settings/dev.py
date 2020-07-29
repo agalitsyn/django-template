@@ -26,7 +26,7 @@ db_settings = {
     'ENGINE': 'django.db.backends.sqlite3',
     'NAME': os.path.join(BASE_DIR, '..', 'db.sqlite3'),
 }
-if config('DJANGO_POSTGRES_DB') != "":
+if config('DJANGO_POSTGRES_DB', default='') != "":
     db_settings = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': config('DJANGO_POSTGRES_DB',),

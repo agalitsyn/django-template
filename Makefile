@@ -70,7 +70,7 @@ static:
 
 .PHONY: messages
 messages:
-	$(DJANGO_MANAGE) makemessages --verbosity 3 --locale ru --ignore assets --ignore docker
+	$(DJANGO_MANAGE) makemessages --verbosity 3 --locale ru --ignore assets --ignore docker --ignore .venv
 
 .PHONY: compilemessages
 compilemessages:

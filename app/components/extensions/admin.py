@@ -1,5 +1,6 @@
 from django.contrib import admin
 
+
 # custom_titled_filter used for filter name alteration on admin list view
 # Example:
 # list_filter = (
@@ -14,6 +15,7 @@ def custom_titled_filter(title):
             instance.title = title
             return instance
     return Wrapper
+
 
 # DeleteSelectedActionMixin deletes default "delete selected" action
 # from admin list view
