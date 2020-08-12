@@ -34,20 +34,35 @@ Install `ms-python.python` and `batisteo.vscode-django` extensions.
 
 `dev` section of `Pipfile` consists of linter, which can be enabled in vscode `settings.json` like:
 ```
-"python.linting.lintOnSave": true,
-"python.linting.flake8Enabled": true,
-"python.linting.flake8Path": "flake8",
-"python.linting.pylintEnabled": true,
-"python.linting.pylintPath": "pylint",
-"python.linting.prospectorEnabled": true,
-"python.linting.prospectorPath": "prospector",
-"python.formatting.provider": "autopep8",
-"python.formatting.autopep8Path": "autopep8",
+{
+    "[python]": {
+        "editor.formatOnPaste": false,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+        }
+    },
+    "python.linting.lintOnSave": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Path": "flake8",
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintPath": "pylint",
+    "python.linting.prospectorEnabled": true,
+    "python.linting.prospectorPath": "prospector",
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "black",
+    "python.formatting.blackArgs": [
+        "--line-length",
+        "120"
+    ],
+    "python.jediEnabled": false,
+}
 ```
 
 Also you might want to execute autoformat on save, so add this setting project-wide in `.vscode/settings.json` like:
 ```
-"editor.formatOnSave": true,
+{
+    "editor.formatOnSave": true,
+}
 ```
 
 ### Install build requirements

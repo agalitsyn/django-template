@@ -6,8 +6,9 @@ verify_ssl = true
 [dev-packages]
 flake8 = "*"
 pylint = "*"
-autopep8 = "*"
+black = "*"
 prospector = "*"
+isort = "*"
 
 [packages]
 django = "~=2.2"
