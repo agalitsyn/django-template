@@ -2,6 +2,7 @@ import os
 
 from decouple import config
 from django.conf.locale.ru import formats as ru_formats
+from django.utils.translation import gettext_lazy as _
 
 WSGI_APPLICATION = 'app.wsgi.application'
 ROOT_URLCONF = 'app.urls'
@@ -89,7 +90,10 @@ AUTH_PASSWORD_VALIDATORS = [
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
-LANGUAGES = ('ru',)
+LANGUAGES = [
+    ('en', _('English')),
+    ('ru', _('Russian')),
+]
 LANGUAGE_CODE = config('DJANGO_LANGUAGE_CODE', default='ru')
 TIME_ZONE = config('DJANGO_TIME_ZONE', default='UTC')
 LOCALE_PATHS = (os.path.join(BASE_DIR, '..', 'assets', 'locale'),)

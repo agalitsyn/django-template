@@ -1,16 +1,21 @@
 # Django template
 
-Simple, but powerful starter django template for modern apps.
+Simple, but powerful starter django template.
+
+;tldr
+Backend - django + postgres + memcached
+Frontend - django templates + bootstrap + jquery
 
 ## Why?
 
-* Built-in `django-admin startproject` is far from [Phoenix framework generator](https://hexdocs.pm/phoenix/up_and_running.html), no tooling, plain structure, no assets management, basically nothing. It's outdated for modern apps.
-* There are many generators for django already available using [cookiecutter](https://github.com/cookiecutter/cookiecutter#python-django). But I found them too complex for starting point for my projects, even with a word `simple` in their names they are not so simple.
+-   Built-in `django-admin startproject` is far from [Phoenix framework generator](https://hexdocs.pm/phoenix/up_and_running.html), no tooling, plain structure, no assets management, basically nothing. It's outdated for modern apps.
+-   There are many generators for django already available using [cookiecutter](https://github.com/cookiecutter/cookiecutter#python-django). But I found them too complex for starting point for my projects, even with a word `simple` in their names they are not so simple.
 
 Generally, django project starts with copy&paste from previous project, so I decided to put basic parts here:
-* managing python and html/css/js dependencies
-* configuration
-* deployment
+
+-   managing python and html/css/js dependencies
+-   configuration
+-   deployment
 
 ## Structure
 
@@ -22,9 +27,9 @@ Static and other files are moved to `assets` folder, which also is used to manag
 
 ## Development
 
-* Development settings are 0 configuration, no need to edit anything.
-* Regular django actions are available using `Makefile`, autocomplete with any shell.
-* Additional tooling installed, such as `django-extensions`, `debug-toolbar` and etc.
+-   Development settings are 0 configuration, no need to edit anything.
+-   Regular django actions are available using `Makefile`, autocomplete with any shell.
+-   Additional tooling installed, such as `django-extensions`, `debug-toolbar` and etc.
 
 ### Editor
 
@@ -33,6 +38,7 @@ Static and other files are moved to `assets` folder, which also is used to manag
 Install `ms-python.python` and `batisteo.vscode-django` extensions.
 
 `dev` section of `Pipfile` consists of linter, which can be enabled in vscode `settings.json` like:
+
 ```
 {
     "[python]": {
@@ -58,23 +64,32 @@ Install `ms-python.python` and `batisteo.vscode-django` extensions.
 }
 ```
 
-Also you might want to execute autoformat on save, so add this setting project-wide in `.vscode/settings.json` like:
+Also you might want to execute autoformat on save and enabling virtualenv, so add this setting project-wide in `.vscode/settings.json` like:
+
 ```
 {
     "editor.formatOnSave": true,
+    "python.pythonPath": "${workspaceFolder}/.venv/bin/python"
 }
 ```
 
 ### Install build requirements
 
 ```bash
-$ brew install python postgresql memcached pyenv pipenv node
+$ brew install python pyenv poetry node
+```
+
+### Install libraries for python modules
+
+```bash
+$ brew install postgresql memcached
 ```
 
 ### Setup python
 
 There are several ways:
-1. Use package manager, already installed
+
+1. Using package manager, should be already installed
 2. `pyenv` can be used for setting local python version. Check how to enable it [here](https://github.com/pyenv/pyenv#installation).
 
 ```bash
@@ -88,10 +103,10 @@ Downloading Python-3.7.4.tar.xz...
 
 ### Install backend dependencies
 
-Project uses [pipenv](https://pipenv.pypa.io/en/latest/basics/).
+Project uses [poetry](https://python-poetry.org/docs/#installation).
 
 ```bash
-$ pipenv install
+$ poetry install
 ```
 
 Note:
@@ -101,12 +116,13 @@ Note:
 
 ```bash
 $ cd assets
-$ npm install --only=prod
+$ npm install
 ```
 
 ### Launch app
 
-To run, activate pipenv like `pipenv shell` and then execute:
+To run, activate pipenv like `poetry shell` and then execute:
+
 ```bash
 $ make
 $ make start
@@ -115,16 +131,19 @@ $ make start
 ## Production configuration
 
 Environment settings are located in `.env` file. To configure current environment copy example file and fill it:
+
 ```bash
 $ cp .env.example .env
 ```
 
 All settings are located in `app/settings` splitted by environment. To get all settings you can simply dump it using `grep`:
+
 ```bash
 $ grep -rn DJANGO_ app/settings
 ```
 
 To run use:
+
 ```bash
 $ DJANGO_ENV=prod ./manage.py runserver localhost:5000
 ```
@@ -133,13 +152,13 @@ $ DJANGO_ENV=prod ./manage.py runserver localhost:5000
 
 ### Docker
 
-For many MVPs docker is easy to go strategy for first deployments. Also docker provides pre-configured dev environment,
+For many MVPs docker is easy to go strategy for the first deployments. Also docker provides pre-configured dev environment,
 which is very close to actual production (non-docker) deployments in terms of separated infrastructure components, like nginx proxy.
 
 #### Prerequisites
 
-* [docker-ce](https://docs.docker.com/engine/installation)
-* [docker-compose](https://docs.docker.com/compose)
+-   [docker-ce](https://docs.docker.com/engine/installation)
+-   [docker-compose](https://docs.docker.com/compose)
 
 #### Build
 
@@ -157,3 +176,5 @@ but build process will stay unchanged.
 $ cd deployments/docker
 $ docker-compose up
 ```
+
+Open http://localhost:8080

@@ -1,4 +1,4 @@
-FROM node:14 as frontend_build
+FROM node:15 as frontend_build
 
 COPY assets /build/assets
 WORKDIR /build/assets
@@ -6,7 +6,7 @@ WORKDIR /build/assets
 RUN npm install --only=prod
 
 
-FROM python:3.8
+FROM python:3.9
 
 ENV DEBIAN_FRONTEND=noninteractive \
     TERM=xterm \
@@ -17,25 +17,23 @@ ENV DEBIAN_FRONTEND=noninteractive \
     # pip:
     PIP_NO_CACHE_DIR=off \
     PIP_DISABLE_PIP_VERSION_CHECK=on \
-    PIP_DEFAULT_TIMEOUT=100 \
-    # pipenv:
-    PIPENV_VENV_IN_PROJECT=1
+    PIP_DEFAULT_TIMEOUT=100
 
 RUN apt-get update && \
     apt-get install --yes --no-install-recommends \
     gettext \
     libpq-dev && \
     apt-get clean && \
-    curl https://raw.githubusercontent.com/kennethreitz/pipenv/master/get-pipenv.py | python
+    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 
 RUN mkdir /opt/django
 WORKDIR /opt/django
 
-COPY Pipfile Pipfile.lock manage.py deployments/docker/docker-entrypoint.sh ./
+COPY pyproject.toml poetry.lock manage.py deployments/docker/docker-entrypoint.sh ./
 COPY app ./app
 COPY assets ./assets
 COPY --from=frontend_build /build/assets/node_modules ./assets/node_modules
 
-RUN pipenv install --ignore-pipfile --system
+RUN $HOME/.poetry/bin/poetry config virtualenvs.create false && $HOME/.poetry/bin/poetry install --no-root --no-dev --no-interaction --no-ansi
 
 CMD ["bash", "docker-entrypoint.sh"]

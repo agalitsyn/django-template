@@ -34,7 +34,7 @@ all: check static compilemessages migrate
 
 .PHONY: lint
 lint:
-	flake8 .
+	prospector --max-line-length 120
 
 .PHONY: check
 check:
