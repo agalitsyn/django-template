@@ -3,8 +3,8 @@
 Simple, but powerful starter django template.
 
 ;tldr
-Backend - django + postgres + memcached
-Frontend - django templates + bootstrap + jquery
+Backend - Nginx + Uvcorn + Django 3 + PostgreSQL 12 + memcached
+Frontend - Django templates + Bootstrap 4 + JQuery 3
 
 ## Why?
 

@@ -22,5 +22,5 @@ fi
 if [[ -n "$RUN_DEV_SERVER" ]]; then
   python manage.py runserver 0.0.0.0:5000
 else
-  gunicorn app.wsgi --bind 0.0.0.0:5000 --timeout 60 --log-file -
+  gunicorn app.asgi:application --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:5000 --timeout 60 --log-file -
 fi
