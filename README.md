@@ -37,30 +37,24 @@ Static and other files are moved to `assets` folder, which also is used to manag
 
 Install `ms-python.python` and `batisteo.vscode-django` extensions.
 
-`dev` section of `Pipfile` consists of linter, which can be enabled in vscode `settings.json` like:
+dev dependencies has linter, which can be enabled in vscode `settings.json` like:
 
 ```
 {
-    "[python]": {
-        "editor.formatOnPaste": false,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": true,
-        }
-    },
-    "python.linting.lintOnSave": true,
-    "python.linting.flake8Enabled": true,
-    "python.linting.flake8Path": "flake8",
-    "python.linting.pylintEnabled": true,
-    "python.linting.pylintPath": "pylint",
-    "python.linting.prospectorEnabled": true,
-    "python.linting.prospectorPath": "prospector",
-    "python.formatting.provider": "black",
-    "python.formatting.blackPath": "black",
-    "python.formatting.blackArgs": [
-        "--line-length",
-        "120"
-    ],
-    "python.jediEnabled": false,
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "python.languageServer": "Microsoft",
+  "python.linting.lintOnSave": true,
+  "python.linting.prospectorEnabled": true,
+  "python.linting.prospectorPath": "prospector",
+  "python.linting.prospectorArgs": ["--max-line-length", "120", "--ignore-paths", ".venv"],
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "black",
+  "python.formatting.blackArgs": ["--line-length", "120"],
 }
 ```
 
@@ -98,7 +92,7 @@ $ pyenv version
 $ pyenv install
 python-build: use openssl from homebrew
 python-build: use readline from homebrew
-Downloading Python-3.7.4.tar.xz...
+Downloading Python-3.9.tar.xz...
 ```
 
 ### Install backend dependencies
