@@ -33,6 +33,8 @@ Static and other files are moved to `assets` folder, which also is used to manag
 
 ### Editor
 
+Repository consists of pre-configured settings for VS Code and Pycharm, see `.vscode` and  `.idea` folders.
+
 #### VS Code
 
 Install `ms-python.python` and `batisteo.vscode-django` extensions.
@@ -66,6 +68,14 @@ Also you might want to execute autoformat on save and enabling virtualenv, so ad
     "python.pythonPath": "${workspaceFolder}/.venv/bin/python"
 }
 ```
+
+#### Pycharm
+
+To achieve same functionality on auto-formatting you need to install `File Watchers` plugin.
+
+Configs are already exists in this repository, for manual installation follow links:
+* [Setup black](https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea)
+* [Setup prettier](https://prettier.io/docs/en/webstorm.html#running-prettier-on-save-using-file-watcher)
 
 ### Install build requirements
 

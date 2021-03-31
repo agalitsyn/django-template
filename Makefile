@@ -34,7 +34,7 @@ all: check static compilemessages migrate
 
 .PHONY: lint
 lint:
-	prospector --max-line-length 120
+	prospector --max-line-length 120 --ignore-paths .venv
 
 .PHONY: check
 check:
