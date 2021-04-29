@@ -1,0 +1,12 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: monthly
+    time: "23:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: django-extensions
+    versions:
+    - 3.0.3
