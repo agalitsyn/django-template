@@ -1,4 +1,4 @@
-FROM node:15 as frontend_build
+FROM node:16 as frontend_build
 
 COPY assets /build/assets
 WORKDIR /build/assets
@@ -22,7 +22,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN apt-get update && \
     apt-get install --yes --no-install-recommends \
     gettext \
-    libpq-dev && \
+    libpq-dev \
+    ca-certificates && \
     apt-get clean && \
     curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 

@@ -3,19 +3,19 @@
 Simple, but powerful starter django template.
 
 ;tldr
-Backend - Nginx + Uvcorn + Django 3 + PostgreSQL 12 + memcached
+Backend - Nginx + Uvcorn + Django 3 LTS + PostgreSQL 12 + memcached
 Frontend - Django templates + Bootstrap 4 + JQuery 3
 
 ## Why?
 
--   Built-in `django-admin startproject` is far from [Phoenix framework generator](https://hexdocs.pm/phoenix/up_and_running.html), no tooling, plain structure, no assets management, basically nothing. It's outdated for modern apps.
--   There are many generators for django already available using [cookiecutter](https://github.com/cookiecutter/cookiecutter#python-django). But I found them too complex for starting point for my projects, even with a word `simple` in their names they are not so simple.
+- Built-in `django-admin startproject` is far from [Phoenix framework generator](https://hexdocs.pm/phoenix/up_and_running.html), no tooling, plain structure, no assets management, basically nothing. It's outdated for modern apps.
+- There are many generators for django already available using [cookiecutter](https://github.com/cookiecutter/cookiecutter#python-django). But I found them too complex for starting point for my projects, even with a word `simple` in their names they are not so simple.
 
 Generally, django project starts with copy&paste from previous project, so I decided to put basic parts here:
 
--   managing python and html/css/js dependencies
--   configuration
--   deployment
+- managing python and html/css/js dependencies
+- configuration
+- deployment
 
 ## Structure
 
@@ -27,13 +27,13 @@ Static and other files are moved to `assets` folder, which also is used to manag
 
 ## Development
 
--   Development settings are 0 configuration, no need to edit anything.
--   Regular django actions are available using `Makefile`, autocomplete with any shell.
--   Additional tooling installed, such as `django-extensions`, `debug-toolbar` and etc.
+- Development settings are 0 configuration, no need to edit anything.
+- Regular django actions are available using `Makefile`, autocomplete with any shell.
+- Additional tooling installed, such as `django-extensions`, `debug-toolbar` and etc.
 
 ### Editor
 
-Repository consists of pre-configured settings for VS Code and Pycharm, see `.vscode` and  `.idea` folders.
+Repository consists of pre-configured settings for VS Code and Pycharm, see `.vscode` and `.idea` folders.
 
 #### VS Code
 
@@ -74,8 +74,9 @@ Also you might want to execute autoformat on save and enabling virtualenv, so ad
 To achieve same functionality on auto-formatting you need to install `File Watchers` plugin.
 
 Configs are already exists in this repository, for manual installation follow links:
-* [Setup black](https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea)
-* [Setup prettier](https://prettier.io/docs/en/webstorm.html#running-prettier-on-save-using-file-watcher)
+
+- [Setup black](https://black.readthedocs.io/en/stable/editor_integration.html#pycharm-intellij-idea)
+- [Setup prettier](https://prettier.io/docs/en/webstorm.html#running-prettier-on-save-using-file-watcher)
 
 ### Install build requirements
 
@@ -112,9 +113,6 @@ Project uses [poetry](https://python-poetry.org/docs/#installation).
 ```bash
 $ poetry install
 ```
-
-Note:
-`pipenv` can create virtual env in project by defining `PIPENV_VENV_IN_PROJECT` or see [issue comment](https://github.com/pypa/pipenv/issues/2197#issuecomment-446601760).
 
 ### Install frontend dependencies
 
@@ -161,8 +159,8 @@ which is very close to actual production (non-docker) deployments in terms of se
 
 #### Prerequisites
 
--   [docker-ce](https://docs.docker.com/engine/installation)
--   [docker-compose](https://docs.docker.com/compose)
+- [docker-ce](https://docs.docker.com/engine/installation)
+- [docker-compose](https://docs.docker.com/compose)
 
 #### Build
 
