@@ -14,7 +14,7 @@ psycopg2-binary = "^2.8.6"
 python-decouple = "^3.4"
 django-split-settings = "^1.0.1"
 uvicorn = "^0.13.4"
-uvloop = "^0.15.2"
+uvloop = "^0.15.3"
 httptools = "^0.1.1"
 
 [tool.poetry.dev-dependencies]
